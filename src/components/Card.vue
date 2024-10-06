@@ -2,16 +2,16 @@
   <div class="card">
     <Navbar />
     <div class="card-content">
-      <h2>{{ planetData.title }}</h2>
-      <ul>
-        <!-- Loop through all key-value pairs in planetData and display them -->
-        <li v-for="(value, key) in planetData" :key="key">
+      <h2>{{ planetData.Title }}</h2>
+      <div class="data-container">
+        <div v-for="(value, key) in planetData" :key="key" class="data-box">
           <strong>{{ key }}:</strong> {{ value }}
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import Navbar from "./Navbar.vue";
@@ -232,17 +232,44 @@ export default {
 }
 
 .card-content h2 {
-  margin-top: 0px;
+  color: rgb(221, 221, 221);
+  margin-top: 30px;
   font-size: 60px;
 }
 
-.card-content ul {
-  list-style: none;
-  padding: 0;
-  font-size: 24px;
+.data-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.card-content ul li {
-  margin: 10px 0;
+.data-box {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  width: 45%;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background 0.3s ease, transform 0.3s ease; /* Transition for smooth effect */
 }
+
+.data-box strong {
+  font-size: 18px;
+}
+
+/* Hover effect */
+.data-box:hover {
+  background: rgba(255, 255, 255, 0.1); /* Change to a lighter background */
+  transform: scale(1.05); /* Slightly enlarge the box */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+@media (max-width: 768px) {
+  .data-box {
+    width: 100%;
+  }
+}
+
+
 </style>
